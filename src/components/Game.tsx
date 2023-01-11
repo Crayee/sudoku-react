@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import { Header } from './components/layout/Header'
-import { GameSection } from './components/layout/GameSection'
-import { StatusSection } from './components/layout/StatusSection'
-import { getUniqueSudoku } from './solver/UniqueSudoku'
-import { useSudokuContext } from './context/SudokuContext'
+import { Header } from './layout/Header'
+import { GameSection } from './layout/GameSection'
+import { StatusSection } from './layout/StatusSection'
+import { getUniqueSudoku } from '../solver/UniqueSudoku'
+import { useSudokuContext } from '../context/SudokuContext'
 
 /**
  * Game is the main React component.
@@ -93,6 +93,7 @@ export const Game: React.FC<{}> = () => {
             setGameArray(tempArray)
 
             if (_isSolved(index, value)) {
+                setOverlay(true)
                 setWon(true)
             }
         }
@@ -221,6 +222,8 @@ export const Game: React.FC<{}> = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    console.log(overlay)
+
     return (
         <>
             <div className={overlay ? 'container blur' : 'container'}>
@@ -251,8 +254,7 @@ export const Game: React.FC<{}> = () => {
                 onClick={onClickOverlay}
             >
                 <h2 className="overlay__text">
-                    You <span className="overlay__textspan1">solved</span>{' '}
-                    <span className="overlay__textspan2">it!</span>
+                    <span className="overlay__textspan2">Proud of youu!</span>
                 </h2>
             </div>
         </>

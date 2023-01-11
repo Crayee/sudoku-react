@@ -1,10 +1,8 @@
-import { Game } from './Game'
+import { Game } from './components/Game'
 import './App.css'
 import { SudokuProvider } from './context/SudokuContext'
 
-/**
- * App is the root React component.
- */
+
 const App = () => {
     return (
         <SudokuProvider>
